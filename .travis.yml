@@ -11,7 +11,7 @@ compiler:
 env:
     global:
         - MONGO_REPO="[ arch=${TRAVIS_CPU_ARCH} ] http://repo.mongodb.com/apt/ubuntu";
-        - REPO_TYPE="trusty/mongodb-enterprise/3.4 multiverse"
+        - REPO_TYPE="${TRAVIS_DIST}/mongodb-enterprise/3.4 multiverse"
         - SOURCES_LOC="/etc/apt/sources.list.d/mongodb-enterprise.list"
         - KEY_SERVER="hkp://keyserver.ubuntu.com:80"
 
@@ -24,10 +24,22 @@ matrix:
     - os: linux
       arch: s390x
       dist: xenial
+      compiler: gcc
       env: CONFIG=Release
     - os: linux
       arch: s390x
       dist: xenial
+      compiler: clang
+      env: CONFIG=Release
+    - os: linux
+      arch: s390x
+      dist: xenial
+      compiler: gcc
+      env: CONFIG=Debug
+    - os: linux
+      arch: s390x
+      dist: xenial
+      compiler: clang
       env: CONFIG=Debug
       
 #jobs:   
@@ -50,9 +62,6 @@ before_install:
 
     # MongoDB Enterprise Edition, latest stable version
     #- sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-    - if [ "$HOSTTYPE" == "s390x" ];then
-        REPO_TYPE="xenial/mongodb-enterprise/3.4 multiverse";
-      fi
     - echo "deb ${MONGO_REPO} ${REPO_TYPE}" | sudo tee ${SOURCES_LOC}
     - cat ${SOURCES_LOC}
     
