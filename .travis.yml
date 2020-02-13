@@ -1,12 +1,11 @@
-dist: 
-  - trusty
-  - xenial
+dist: trusty
+
   
 sudo: required
 
-arch:
-  - amd64
-  - s390x
+#arch:
+#  - amd64
+#  - s390x
   
 language: cpp
 
@@ -26,12 +25,10 @@ env:
         - CONFIG=Debug
 
 jobs:   
-    exclude:	    
-      - arch: amd64
-        dist: xenial
-    exclude:	    
+    include:	    
+      - arch: amd64	    
       - arch: s390x
-        dist: trusty
+        dist: xenial
     
 # Setup required repositories before installation
 before_install:
