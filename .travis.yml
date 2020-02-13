@@ -1,10 +1,6 @@
 dist: trusty
   
 sudo: required
-
-arch:
-  - amd64
-  - s390x
   
 language: cpp
 
@@ -22,19 +18,17 @@ env:
     matrix:
         - CONFIG=Release
         - CONFIG=Debug
-        - CONFIG=Release DIST=xenial
-        - CONFIG=Debug DIST=xenial
         
 matrix:
-  exclude:
-    - env: CONFIG=Release DIST=xenial
-      arch: amd64
-    - env: CONFIG=Debug DIST=xenial
-      arch: amd64
-    - env: CONFIG=Release
+  include:
+    - os: linux
       arch: s390x
-    - env: CONFIG=Debug
+      dist: xenial
+      env: CONFIG=Release
+    - os: linux
       arch: s390x
+      dist: xenial
+      env: CONFIG=Debug
       
 #jobs:   
   #  exclude:	    
