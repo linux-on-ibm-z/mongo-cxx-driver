@@ -13,11 +13,7 @@ compiler:
 
 env:
     global:
-        - if [ "$HOSTTYPE" == "s390x" ];then
-            MONGO_REPO="[ arch=s390x ] http://repo.mongodb.com/apt/ubuntu";
-          else
-            MONGO_REPO="[ arch=amd64 ] http://repo.mongodb.com/apt/ubuntu";
-          fi
+        - MONGO_REPO="[ arch=${TRAVIS_CPU_ARCH} ] http://repo.mongodb.com/apt/ubuntu";
         - REPO_TYPE="trusty/mongodb-enterprise/3.4 multiverse"
         - SOURCES_LOC="/etc/apt/sources.list.d/mongodb-enterprise.list"
         - KEY_SERVER="hkp://keyserver.ubuntu.com:80"
