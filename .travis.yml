@@ -1,6 +1,4 @@
-dist: 
-  - trusty
-  - xenial
+dist: trusty
   
 sudo: required
 
@@ -24,11 +22,20 @@ env:
     matrix:
         - CONFIG=Release
         - CONFIG=Debug
+        - DIST=xenial
+        - DIST=trusty
 
-jobs:   
-    exclude:	    
-      - arch: amd64	    
-        dist: xenial
+matrix:
+  exclude:
+    - env: DIST=xenial
+      arch: amd64
+    - env: DIST=trusty
+      arch: s390x
+      
+#jobs:   
+  #  exclude:	    
+  #    - arch: amd64	    
+  #      dist: xenial
     
 # Setup required repositories before installation
 before_install:
