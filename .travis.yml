@@ -37,7 +37,8 @@ before_install:
     # MongoDB Enterprise Edition, latest stable version
     - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
     - echo "deb ${MONGO_REPO} ${REPO_TYPE}" | sudo tee ${SOURCES_LOC}
-
+    - cat ${SOURCES_LOC}
+    
     # Update all the repositories
     - sudo apt-get update -qq
 
