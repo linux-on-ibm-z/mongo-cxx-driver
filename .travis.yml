@@ -2,14 +2,14 @@ dist: trusty
 sudo: required
 
 arch:
-  - amd64
+  #- amd64
   - s390x
   
 language: cpp
 
 compiler:
     - gcc
-    - clang
+    #- clang
 
 env:
     global:
@@ -28,7 +28,7 @@ before_install:
     - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
     - if [ "$HOSTTYPE" == "s390x" ];then
         sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 15CF4D18AF4F7421;
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv BC711F9BA15703C6;
+        #sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv BC711F9BA15703C6;
       else
         sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6;
       fi
@@ -36,8 +36,9 @@ before_install:
     - wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | sudo apt-key add -
 
     # MongoDB Enterprise Edition, latest stable version
-    #- sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+    - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
     - echo "deb ${MONGO_REPO} ${REPO_TYPE}" | sudo tee ${SOURCES_LOC}
+    - cat ${SOURCES_LOC}
 
     # Update all the repositories
     - sudo apt-get update -qq
