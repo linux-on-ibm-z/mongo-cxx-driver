@@ -22,14 +22,18 @@ env:
     matrix:
         - CONFIG=Release
         - CONFIG=Debug
-        - DIST=xenial
-        - DIST=trusty
-
+        - CONFIG=Release DIST=xenial
+        - CONFIG=Debug DIST=xenial
+        
 matrix:
   exclude:
-    - env: DIST=xenial
+    - env: CONFIG=Release DIST=xenial
       arch: amd64
-    - env: DIST=trusty
+    - env: CONFIG=Debug DIST=xenial
+      arch: amd64
+    - env: CONFIG=Release
+      arch: s390x
+    - env: CONFIG=Debug
       arch: s390x
       
 #jobs:   
