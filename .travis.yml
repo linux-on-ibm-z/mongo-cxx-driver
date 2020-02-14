@@ -41,6 +41,9 @@ matrix:
       dist: xenial
       compiler: clang
       env: CONFIG=Debug
+   include:
+    - os: linux
+      arch: amd64
     
 # Setup required repositories before installation
 before_install:
@@ -72,7 +75,7 @@ install:
 
     # Clang
     #- if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-3.6; export CXX="clang++-3.6"; export CC="clang-3.6"; fi
-     - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-6.0; export CXX="clang++-6.0"; export CC="clang-6.0"; fi
+    - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-6.0; export CXX="clang++-6.0"; export CC="clang-6.0"; fi
 
     # CMake
     - sudo apt-get install -qq cmake
