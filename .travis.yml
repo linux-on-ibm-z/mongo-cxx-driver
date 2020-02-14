@@ -29,31 +29,23 @@ matrix:
     - os: linux
       arch: s390x
       dist: xenial
-      compiler: clang
-      env: CONFIG=Release
-    - os: linux
-      arch: s390x
-      dist: xenial
       compiler: gcc
       env: CONFIG=Debug
     - os: linux
       arch: s390x
       dist: xenial
       compiler: clang
-      env: CONFIG=Debug
-  exclude:
+      env: CONFIG=Release  
     - os: linux
-      arch: amd64
+      arch: s390x
+      dist: xenial
+      compiler: clang
+      env: CONFIG=Debug
     
 # Setup required repositories before installation
 before_install:
     # Add the modern toolchain repositories (llvm repo depends on ubunut-toolchain-r + gcc)
     - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-    # - if [ "$HOSTTYPE" == "s390x" ];then
-    #     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv BC711F9BA15703C6;
-    #   else
-    #     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6;
-    #   fi
     - sudo add-apt-repository -y 'deb http://llvm.org/apt/trusty/ llvm-toolchain-trusty-3.6 main'
     - wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | sudo apt-key add -
 
