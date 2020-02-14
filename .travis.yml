@@ -77,8 +77,9 @@ install:
     - if [ "$CXX" == "clang++" ]; then 
          if [ "$HOSTTYPE" == "s390x" ];then 
             sudo apt-get install --allow-unauthenticated -qq clang-6.0; export CXX="clang++-6.0"; export CC="clang-6.0"; 
-        else
+         else
             sudo apt-get install --allow-unauthenticated -qq clang-3.6; export CXX="clang++-3.6"; export CC="clang-3.6";
+         fi
       fi
     
     # CMake
