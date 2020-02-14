@@ -42,10 +42,6 @@ matrix:
       compiler: clang
       env: CONFIG=Debug
     
-jobs:   
-    exclude:	    
-      - arch: amd64	    
-    
 # Setup required repositories before installation
 before_install:
     # Add the modern toolchain repositories (llvm repo depends on ubunut-toolchain-r + gcc)
