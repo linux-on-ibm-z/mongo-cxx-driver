@@ -41,7 +41,7 @@ matrix:
       dist: xenial
       compiler: clang
       env: CONFIG=Debug
-   include:
+  exclude:
     - os: linux
       arch: amd64
     
