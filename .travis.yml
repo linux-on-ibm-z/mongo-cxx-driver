@@ -43,7 +43,7 @@ matrix:
       env: CONFIG=Debug
    exclude:
      - os: linux
-      arch: amd64
+       arch: amd64
    
       
 #jobs:   
