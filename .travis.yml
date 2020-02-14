@@ -49,11 +49,11 @@ matrix:
 before_install:
     # Add the modern toolchain repositories (llvm repo depends on ubunut-toolchain-r + gcc)
     - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-    - if [ "$HOSTTYPE" == "s390x" ];then
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv BC711F9BA15703C6;
-      else
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6;
-      fi
+    # - if [ "$HOSTTYPE" == "s390x" ];then
+    #     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv BC711F9BA15703C6;
+    #   else
+    #     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6;
+    #   fi
     - sudo add-apt-repository -y 'deb http://llvm.org/apt/trusty/ llvm-toolchain-trusty-3.6 main'
     - wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key | sudo apt-key add -
 
@@ -70,7 +70,7 @@ before_install:
 
 install:
     # GCC
-    - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.9; export CXX="g++-4.9"; export CC="gcc-4.9"; fi
+    - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.9 clang-format; export CXX="g++-4.9"; export CC="gcc-4.9"; fi
 
     # Clang
     - if [ "$CXX" == "clang++" ]; then 
