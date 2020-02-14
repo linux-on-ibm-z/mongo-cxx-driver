@@ -41,6 +41,10 @@ matrix:
       dist: xenial
       compiler: clang
       env: CONFIG=Debug
+   exclude:
+     - os: linux
+      arch: amd64
+   
       
 #jobs:   
   #  exclude:	    
@@ -76,7 +80,8 @@ install:
     - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.9; export CXX="g++-4.9"; export CC="gcc-4.9"; fi
 
     # Clang
-    - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-3.6; export CXX="clang++-3.6"; export CC="clang-3.6"; fi
+    #- if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-3.6; export CXX="clang++-3.6"; export CC="clang-3.6"; fi
+     - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-6.0; export CXX="clang++-6.0"; export CC="clang-6.0"; fi
 
     # CMake
     - sudo apt-get install -qq cmake
